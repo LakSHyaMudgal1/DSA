@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool isSafe(int row, int col, vector<string> board, int n){
+    bool isSafe(int row, int col, vector<string>& board, int& n){
         int r = row;
         int c = col;
         while(r >= 0 && c >= 0 ){
@@ -24,7 +24,7 @@ public:
         return true;
 
     }
-    void nQueen(int col, vector<string> board, int n, vector<vector<string>>& ans){
+    void nQueen(int col, vector<string>& board, int& n, vector<vector<string>>& ans){
         if(col == n){
             ans.push_back(board);
         }
