@@ -17,12 +17,6 @@ public:
         }
         r = row;
         c = col;
-        while(r >= 0){
-            if(board[r][c] == 'Q') return false;
-            r--;
-        }
-        r = row;
-        c = col;
         while(c >= 0){
             if(board[r][c] == 'Q') return false;
             c--;
