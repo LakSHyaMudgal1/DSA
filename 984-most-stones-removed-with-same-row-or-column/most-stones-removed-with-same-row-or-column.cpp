@@ -45,10 +45,8 @@ int removeStones(vector<vector<int>>& stones) {
         mp[stones[i][0]]=1;
         mp[stones[i][1]+row+1]=1;
     }
-    for(int i=0;i<(row+col+2);i++){
-        if(d1.findParent(i) == i && mp.find(i) != mp.end()){
-           cnt++;
-        }
+    for(auto it : mp){
+        if(d1.findParent(it.first) == it.first) cnt++;
     }
     return (stones.size()-cnt);
     }
