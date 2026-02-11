@@ -44,26 +44,26 @@ public:
 class Solution {
 public:
 
-    int makeConnected(int n, vector<vector<int>>& connections) {
+    int makeConnected(int n, vector<vector<int>>& arr) {
         DisjointSet A(n);
-        int extra = 0;
-        int ans = 0;
-        for(auto it : connections){
+        int cnt = 0;
+        int cmp = 0;
+        for(auto it : arr){
             int u = it[0];
             int v = it[1];
             if(A.findUPar(u) == A.findUPar(v)){
-                extra++;
+                cnt++;
             }else{
-                A.unionBySize(u,v);
+                A.unionByRank(u, v);
             }
         }
-        for(int i = 0;i < n; i++){
-            if(A.parent[i] == i){
-                ans++;
-            }
-        }
-        if(ans-1 <= extra) return ans-1;
-        return -1;
 
+        for(int i = 0; i < n; i++){
+            if(A.parent[i] == i){
+                cmp++;
+            }
+        }
+        if(cnt >= cmp - 1) return cmp - 1;
+        return -1;
     }
 };
