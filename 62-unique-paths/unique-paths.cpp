@@ -15,7 +15,7 @@ public:
         return dp[i][j] = left + up;
     }
     int uniquePaths(int m, int n) {
-        vector<vector<int>> dp(m + 1, vector<int>(n, -1));
+        vector<vector<int>> dp(m, vector<int>(n, -1));
         return solve(m - 1, n - 1, dp);
     }
 };
