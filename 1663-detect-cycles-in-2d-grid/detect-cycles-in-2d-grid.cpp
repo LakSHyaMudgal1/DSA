@@ -42,11 +42,12 @@ public:
                 if(nrow == rowp && ncol == colp) continue;
 
                 if(dfs(nrow, ncol, row, col, grid, vis)) return true;
+                continue;
             }
 
-            else if(isValid(nrow, ncol, n, m) && vis[nrow][ncol] && grid[nrow][ncol] == ch
+            if(isValid(nrow, ncol, n, m) && vis[nrow][ncol] && grid[nrow][ncol] == ch
              && !(nrow == rowp && ncol == colp)) return true;
-        }
+            }
 
         return false;
     }
