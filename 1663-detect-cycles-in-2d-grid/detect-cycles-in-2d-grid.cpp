@@ -38,20 +38,14 @@ public:
             //     else return true;
             // }
 
-            if(isValid(nrow, ncol, n, m) && grid[nrow][ncol] == ch){
-                
-                if(vis[nrow][ncol] == 0) {
-                    if(dfs(nrow, ncol, row, col, grid, vis)) return true;
+            if(isValid(nrow, ncol, n, m) && !vis[nrow][ncol] && grid[nrow][ncol] == ch){
+                if(nrow == rowp && ncol == colp) continue;
 
-                    if(nrow == rowp && ncol == colp) continue;
-                }
-                else{
-                    if(isValid(nrow, ncol, n, m) && vis[nrow][ncol] && grid[nrow][ncol] == ch
-                        && !(nrow == rowp && ncol == colp)) return true;
-                }                
+                if(dfs(nrow, ncol, row, col, grid, vis)) return true;
             }
 
-            
+            else if(isValid(nrow, ncol, n, m) && vis[nrow][ncol] && grid[nrow][ncol] == ch
+             && !(nrow == rowp && ncol == colp)) return true;
         }
 
         return false;
