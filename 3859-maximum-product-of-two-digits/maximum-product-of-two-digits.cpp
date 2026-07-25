@@ -1,17 +1,19 @@
 class Solution {
 public:
     int maxProduct(int n) {
-        priority_queue<int> pq;
+        int maxi = 0;
+        int smaxi = 0;
+
         while(n != 0) {
             int val = n % 10;
             n /= 10;
-            pq.push(val);
+            if(val >= maxi) {
+                smaxi = maxi;
+                maxi = val;
+            }
+            if(val > smaxi && val < maxi) smaxi = val;
         }
 
-        int v1 = pq.top();
-        pq.pop();
-        int v2 = pq.top();
-        pq.pop();
-        return v1 * v2;
+        return maxi * smaxi;
     }
 };
