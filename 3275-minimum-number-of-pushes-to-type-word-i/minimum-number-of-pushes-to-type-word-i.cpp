@@ -22,11 +22,11 @@ public:
             if (cnt <= 8)
                 ans += freq;
             else if (cnt <= 16)
-                ans += 2 * freq;
+                ans += 2 ;
             else if (cnt <= 24)
-                ans += 3 * freq;
+                ans += 3 ;
             else
-                ans += 4 * freq;
+                ans += 4 ;
         }
 
         return ans;
