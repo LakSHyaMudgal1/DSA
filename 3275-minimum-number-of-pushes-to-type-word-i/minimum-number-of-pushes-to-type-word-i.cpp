@@ -1,33 +1,19 @@
 class Solution {
 public:
     int minimumPushes(string word) {
-        unordered_map<char, int> mp;
-        for(int i = 0; i < word.size(); i++) {
-            mp[word[i]]++;
-        }
-
-        priority_queue<pair<int, char>> pq;
-        for(auto it : mp) {
-            pq.push({it.second, it.first});
-        }
-
-        int cnt = 0;
+        int n = word.size();
         int ans = 0;
-        while(!pq.empty()) {
-            auto val = pq.top();
-            int freq = val.first;
-            char ch = val.second;
-            pq.pop();
-            cnt++;
-            if (cnt <= 8)
-                ans += freq;
-            else if (cnt <= 16)
-                ans += 2 ;
-            else if (cnt <= 24)
-                ans += 3 ;
-            else
-                ans += 4 ;
-        }
+
+        ans += min(n, 8);
+
+        if (n > 8)
+            ans += min(n - 8, 8) * 2;
+
+        if (n > 16)
+            ans += min(n - 16, 8) * 3;
+
+        if (n > 24)
+            ans += (n - 24) * 4;
 
         return ans;
     }
